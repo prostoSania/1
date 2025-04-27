@@ -1,0 +1,49 @@
+Номер 11.
+Базовый класс Vehicle. Vehicle(const std::string& model): Конструктор принимает имя модели. virtual double fuelEfficiency(double distance, double fuelConsumed) const: Эта виртуальная функция вычисляет расход топлива в литрах на 100 км. Она проверяет, что и distance и fuelConsumed являются положительными. Если это не так, она генерирует std::invalid_argument исключение. Она помечена как const, потому что не изменяет состояние Vehicle. virtual ~Vehicle() {}: Виртуальный деструктор. getModel(): Возвращает название модели.
+Производный класс Car. Car(const std::string& model, int numberOfDoors): Конструктор принимает название модели и количество дверей. Он проверяет, что количество дверей положительное. displayCarInfo(): Функция для отображения информации, относящейся к конкретному автомобилю.
+Производный класс Truck. Truck(const std::string& model, double cargoCapacity): Конструктор принимает название модели и грузоподъёмность. Он проверяет, что грузоподъёмность положительная. double fuelEfficiency(double distance, double fuelConsumed, double cargoWeight) const override: Эта функция переопределяет метод базового класса fuelEfficiency() для расчёта расхода топлива грузовика с учётом веса груза. displayTruckInfo(): Функция для отображения информации, относящейся к конкретному грузовику.
+
+Номер 12.
+Базовый класс User. User(const std::string& username, const std::string& password): Конструктор принимает имя пользователя и пароль. virtual void login(const std::string& enteredPassword) const: Это виртуальная login функция. virtual ~User() {}: Виртуальный деструктор. getUsername(): Возвращает имя пользователя. protected std::string username;, protected std::string password;: username и password используются protected для обеспечения доступа из производных классов.
+Производный класс AdminUser. AdminUser(const std::string& username, const std::string& password, const std::string& adminRole): Конструктор принимает имя пользователя, пароль и роль администратора. getAdminRole(): Возвращает роль администратора.
+Производный класс RegularUser. RegularUser(const std::string& username, const std::string& password, const std::string& userGroup): Конструктор принимает имя пользователя, пароль и группу пользователей. getUserGroup(): Возвращает группу пользователей.
+
+Номер 13.
+Базовый класс Shape. virtual void scale(double factor): Виртуальная scale функция. Она принимает коэффициент масштабирования. Она проверяет, является ли коэффициент масштабирования положительным. Если нет, она генерирует std::invalid_argument. virtual ~Shape() {}: Виртуальный деструктор.
+Производный класс Circle. Circle(double radius): Конструктор принимает начальный радиус. void scale(double factor) override: Переопределение для scale. Оно масштабирует radius круга. Оно повторно проверяет factor на предмет изменений scale и вызывает базовую реализацию масштабирования. getRadius(): Возвращает значение radius. area(): Вычисляет и возвращает площадь на основе текущего радиуса.
+Производный класс Square. Square(double side): Конструктор принимает начальную сторону. void scale(double factor) override: Переопределение для scale. Оно масштабирует side квадрата. Оно повторно проверяет factor на предмет изменений scale и вызывает базовую реализацию масштабирования. getSide(): Возвращает значение side. area(): Вычисляет и возвращает площадь на основе текущей стороны.
+
+Номер 14.
+Базовый класс Library. Library(const std::string& name): Конструктор принимает имя библиотеки. virtual void borrowBook(const std::string& bookTitle): Виртуальная borrowBook функция. Она пытается найти книгу в availableBooks векторе с помощью std::find. virtual ~Library() {}: Виртуальный деструктор. addBook(const std::string& bookTitle): Добавляет книгу в список доступных книг. getName(): Возвращает имя библиотеки.
+Производный класс FictionLibrary. FictionLibrary(const std::string& name, const std::string& genre): Конструктор инициализирует name и genre. getGenre(): Возвращает значение жанра.
+Производный класс NonFictionLibrary. NonFictionLibrary(const std::string& name, const std::string& subjectArea): Конструктор инициализирует name и subjectArea. getSubjectArea(): Возвращает предметную область.
+
+Номер 15.
+Базовый класс Order. Order(int orderId, const std::vector<std::string>& items): Конструктор принимает идентификатор заказа и элементы. virtual void process() const: Эта виртуальная функция обрабатывает заказ. virtual ~Order() {}: Виртуальный деструктор. getOrderId(): Возвращает идентификатор заказа. getTotalAmount(): Возвращает общую сумму заказа.
+Производный класс OnlineOrder. OnlineOrder(int orderId, const std::vector<std::string>& items, const std::string& shippingAddress): Конструктор принимает идентификатор заказа, товары и адрес доставки. void process() const override: Эта функция переопределяет функцию базового класса process().
+Производный класс InStoreOrder. InStoreOrder(int orderId, const std::vector<std::string>& items, int customerId): Конструктор принимает идентификатор заказа, номенклатуры и идентификатор клиента. void process() const override: Эта функция переопределяет функцию базового класса process(). getCustomerId(): Возвращает идентификатор клиента.
+
+Номер 16.
+Базовый класс Shape. virtual ~Shape() {}: Виртуальный деструктор.
+Производный класс Triangle. void rotate(double angleDegrees) override: Он нормализует angleDegrees так, чтобы они находились в диапазоне от 0 до 360 градусов, и обрабатывает отрицательные значения. getAngleA(), getAngleB(), getAngleC(): Возвращает значения угла.
+Производный класс Rectangle. Rectangle(): Конструктор инициализирует угол равным 0. void rotate(double angleDegrees) override: Он нормализует angleDegrees так, чтобы они находились в диапазоне от 0 до 360 градусов, и обрабатывает отрицательные значения. getAngle(): Возвращает значение угла.
+
+Номер 17.
+Базовый класс Payment. Payment(double amount): Конструктор принимает сумму платежа. virtual void processPayment() const: Виртуальная функция, которая обрабатывает платёж. В базовом классе она просто выводит сумму к оплате. Метод const потому, что платёж не меняет сам объект Payment ядра. virtual ~Payment() {}: Виртуальный деструктор. getAmount(): Возвращает сумму платежа.
+Производный класс CreditCardPayment. CreditCardPayment(double amount, const std::string& cardNumber, const std::string& expiryDate, double availableCredit)Конструктор принимает сумму, номер карты, срок действия и доступный кредит. void processPayment() const override: Это переопределяет processPayment. Сначала он вызывает Payment::processPayment() для выполнения базовой логики, а затем добавляет информацию о кредитной карте. getCardNumber(), getExpiryDate(): Данные, относящиеся к возвращаемой карте.
+Производный класс PayPalPayment. PayPalPayment(double amount, const std::string& emailAddress, double availableBalance): Конструктор принимает сумму, адрес электронной почты и доступный баланс. void processPayment() const override: Это переопределяет processPayment. Сначала он вызывает Payment::processPayment() для выполнения базовой логики, а затем добавляет информацию об адресе электронной почты. getEmailAddress(): Возвращает используемый адрес электронной почты.
+
+Номер 18.
+Базовый класс ExceptionHandler. virtual void handle(const std::exception& e) constВиртуальная handle функция принимает std::exception объект в качестве входных данных. Она выводит общее сообщение об ошибке в std::cerr. const указывает на то, что она не изменяет ExceptionHandler объект. virtual ~ExceptionHandler() {}: Виртуальный деструктор.
+Производный класс FileExceptionHandler. FileExceptionHandler(const std::string& filePath): Конструктор принимает путь к файлу. void handle(const std::exception& e) const override: Это переопределяет метод базового класса handle().
+Производный класс NetworkExceptionHandler. NetworkExceptionHandler(const std::string& serverAddress): Конструктор принимает адрес сервера. void handle(const std::exception& e) const override: Это переопределяет метод базового класса handle().
+
+Номер 19.
+Базовый класс Course. Course(const std::string& courseName, int maxStudents): Конструктор принимает название курса и максимальное количество студентов. virtual void enroll(const std::string& studentName): Виртуальная enroll функция. virtual ~Course() {}: Виртуальный деструктор. getCourseName(): Возвращает название курса. getMaxStudents(): Возвращает максимальное количество учащихся. getEnrolledCount(): Возвращает количество зарегистрированных студентов.
+Производный класс OnlineCourse. OnlineCourse(const std::string& courseName, int maxStudents, const std::string& platform): Конструктор принимает название курса, максимальное количество студентов и платформу. void enroll(const std::string& studentName) override: Переопределение функции enroll. getPlatform(): Возвращает платформу.
+Производный класс OfflineCourse. OfflineCourse(const std::string& courseName, int maxStudents, const std::string& classroom): Конструктор принимает название курса, максимальное количество учащихся и название классной комнаты. void enroll(const std::string& studentName) override: Переопределение функции enroll. getClassroom(): Возвращает классную комнату.
+
+Номер 20.
+Базовый класс ShoppingCart. addItem(const std::string& item): Добавляет элемент в items вектор. virtual double getItemPrice(const std::string& item) const: Новая виртуальная функция для расчёта стоимости каждого товара. Эта реализация очень проста и возвращает только 10.0, но делает код более понятным. virtual ~ShoppingCart() {}: Виртуальный деструктор.
+Производный класс RegularCart. double checkout() const override: Реализован метод checkout().
+Производный класс DiscountedCart. DiscountedCart(double discountRate): Конструктор проверяет, что ставка дисконтирования находится в диапазоне от 0 до 1. 
